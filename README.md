@@ -1,4 +1,4 @@
-# KnowledgeAI — Document Intelligence & RAG Platform
+# AI-POWERED KNOWLEDGE DOCUMENT ASSISTANT
 
 KnowledgeAI is an enterprise-grade document intelligence platform featuring hybrid vector search (FAISS + Keyword matching), AI Assistant RAG queries, interactive practice panels (Objective MCQs and Viva Voice exams), and **Embedded Document Image Extraction**.
 
