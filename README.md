@@ -105,3 +105,7 @@ The application combines document processing, vector search, and AI-generated re
 - Embeddings - Convert text into vectors
 - RAG - Context-based AI responses
 - Groq API - AI response generation
+
+1. Clone the Repository
+2. Start the application by node server.js
+3. it will run in  http://localhost:3000
