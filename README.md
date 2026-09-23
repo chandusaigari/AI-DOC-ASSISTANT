@@ -93,7 +93,7 @@ The application combines document processing, vector search, and AI-generated re
                               └──────────────┘
 
 
- **Technologies Used**
+ Technologies Used
 
 - HTML - Web page structure
 - CSS - User interface styling
