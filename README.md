@@ -94,15 +94,32 @@ The application combines document processing, vector search, and AI-generated re
 
 ## **Technologies Used**
 
-| **Technology** | **Purpose** |
-|---|---|
-| **HTML** | Web page structure |
-| **CSS** | User interface styling |
-| **JavaScript** | Frontend interaction |
-| **Node.js** | Backend development |
-| **Python** | AI and document processing |
-| **MySQL 8.0** | Database management |
-| **FAISS** | Vector similarity search |
-| **Embeddings** | Convert text into vectors |
-| **RAG** | Context-based AI responses |
-| **Groq API** | AI response generation |
+### **HTML**
+Web page structure
+
+### **CSS**
+User interface styling
+
+### **JavaScript**
+Frontend interaction
+
+### **Node.js**
+Backend development
+
+### **Python**
+AI and document processing
+
+### **MySQL 8.0**
+Database management
+
+### **FAISS**
+Vector similarity search
+
+### **Embeddings**
+Convert text into vectors
+
+### **RAG**
+Context-based AI responses
+
+### **Groq API**
+AI response generation
