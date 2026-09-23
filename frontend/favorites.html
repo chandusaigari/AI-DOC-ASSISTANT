@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex font-sans">
+
+  <!-- Shared Sidebar Root (Dark Charcoal Theme) -->
+  <aside id="sidebar-root" data-active="favorites"></aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+    <!-- Top Menubar Header -->
+    <header class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div>
+        <h1 class="text-xl font-serif font-bold text-[#221B17] flex items-center gap-2">
+          <span>Favorite Documents & Bookmarks</span>
+          <span class="px-2.5 py-0.5 bg-[#9C7A3F]/10 text-[#9C7A3F] text-xs font-serif font-bold rounded border border-[#9C7A3F]/20">Starred</span>
+        </h1>
+        <p class="text-xs text-[#8C827A] mt-0.5">Quick access to your saved documents and AI chat answers</p>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+      
+      <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#E5DDD0]">
+          <div class="flex items-center gap-2">
+            <h3 class="text-base font-serif font-bold text-[#221B17]">Starred Library Items</h3>
+            <span class="text-xs text-[#8C827A] font-mono px-2 py-0.5 bg-[#FAF6EF] rounded border border-[#E5DDD0]" id="favCount">0 items</span>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex items-center gap-1.5 bg-[#FAF6EF] p-1 rounded-lg border border-[#E5DDD0] text-xs font-serif font-semibold">
+            <button onclick="filterFavorites('all')" id="tab-all" class="fav-tab px-3 py-1 rounded-md transition-all bg-[#7A2E38] text-[#FAF6EF] shadow-xs cursor-pointer">
+              All Items
+            </button>
+            <button onclick="filterFavorites('document')" id="tab-document" class="fav-tab px-3 py-1 rounded-md transition-all text-[#4A403A] hover:bg-white/60 cursor-pointer">
+              ★ PDF Documents
+            </button>
+            <button onclick="filterFavorites('message')" id="tab-message" class="fav-tab px-3 py-1 rounded-md transition-all text-[#4A403A] hover:bg-white/60 cursor-pointer">
+              🤖 AI Answers
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="favGrid">
+          <div class="col-span-full py-12 text-center text-[#8C827A] text-sm">
+            Loading favorites...
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/favorites.js"></script>
+</body>
+</html>

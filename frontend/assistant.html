@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex font-sans">
+
+  <!-- Shared Sidebar Root (Dark Charcoal Theme) -->
+  <aside id="sidebar-root" data-active="assistant"></aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col h-screen min-w-0 bg-[#FAF6EF]">
+
+    <!-- Top Header -->
+    <header class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div>
+          <h1 class="text-xl font-serif font-bold text-[#221B17] flex items-center gap-2">
+            <span>KnowledgeAI Assistant</span>
+            <span class="px-2.5 py-0.5 bg-[#7A2E38]/10 text-[#7A2E38] text-xs font-serif font-bold rounded border border-[#7A2E38]/20">Threaded RAG</span>
+          </h1>
+          <p class="text-xs text-[#8C827A] mt-0.5">Session-scoped answers with exact citations and persistent thread history</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="favorites.html" class="btn-favorite py-2 px-3 text-xs flex items-center gap-1.5 shadow-sm hover:shadow" title="View Saved Favorites">
+          <span class="text-[#9C7A3F] flex items-center shrink-0">
+            <svg class="w-3.5 h-3.5 fill-current stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></polygon></svg>
+          </span>
+          <span>Favorites</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- View 1: Session Grid Container -->
+    <div id="sessionGridContainer" class="p-8 max-w-7xl mx-auto w-full overflow-y-auto"></div>
+
+    <!-- View 2: Session Chat View Container -->
+    <div id="sessionChatContainer" class="flex-1 flex flex-col h-full min-h-0 hidden">
+
+      <!-- Breadcrumb & Thread Navigation Header -->
+      <div class="bg-white border-b border-[#E5DDD0] px-6 py-3 flex items-center justify-between shadow-xs z-20">
+        <div class="flex items-center gap-2 text-xs sm:text-sm font-serif">
+          <button onclick="backToSessionsChat()" class="text-[#9C7A3F] hover:text-[#7A2E38] font-semibold flex items-center gap-1 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+            <span>Sessions</span>
+          </button>
+          <span class="text-[#E5DDD0]">/</span>
+          <span id="chatBreadcrumbIcon" class="text-lg">📁</span>
+          <span id="chatBreadcrumbName" class="font-bold text-[#1C1613]">DBMS</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="createNewThread()" class="px-3 py-1.5 rounded-lg bg-[#7A2E38] hover:bg-[#66242D] text-[#FAF6EF] text-xs font-serif font-semibold shadow-xs transition inline-flex items-center gap-1.5 cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            <span>New Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Threads Row Bar -->
+      <div id="threadsBar" class="bg-[#FAF6EF] border-b border-[#E5DDD0] px-6 py-2 flex items-center gap-2 overflow-x-auto text-xs shrink-0 scrollbar-none">
+        <span class="text-[#8C827A] font-serif font-semibold text-[11px] uppercase tracking-wider shrink-0 mr-1">CHATS:</span>
+        <div id="threadsListContainer" class="flex items-center gap-2 overflow-x-auto py-1">
+          <!-- Thread chips populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Edge-to-Edge Full Width Chat Messages Container -->
+      <div id="chatContainer" class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 w-full">
+        <!-- Messages rendered dynamically -->
+      </div>
+
+      <!-- Edge-to-Edge Full Width Chat Input Bar -->
+      <div class="p-4 md:p-6 bg-white border-t border-[#E5DDD0]">
+        <form id="chatForm" class="w-full flex items-center gap-3.5">
+          <input type="text" id="chatInput" required placeholder="Ask a question about this session..." 
+            class="flex-1 px-5 py-3.5 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-[#221B17] text-sm focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:bg-white focus:border-[#9C7A3F] transition-all">
+          <button type="submit" id="sendBtn" class="btn-primary py-3.5 px-7 text-sm font-semibold rounded-md whitespace-nowrap bg-[#7A2E38] hover:bg-[#5A2129]">
+            <span>Send Question &rarr;</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/sessions.js"></script>
+  <script src="js/assistant.js"></script>
+</body>
+</html>

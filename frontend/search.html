@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic Search - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex font-sans">
+
+  <!-- Shared Sidebar Root (Dark Charcoal Theme) -->
+  <aside id="sidebar-root" data-active="search"></aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+    <!-- Top Menubar Header -->
+    <header class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div>
+        <h1 class="text-xl font-serif font-bold text-[#221B17]">FAISS Vector Search</h1>
+        <p class="text-xs text-[#8C827A] mt-0.5">Sub-second vector similarity search across all document embeddings</p>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+
+      <!-- Upgraded Search Input Card UI -->
+      <div class="kai-card p-4 bg-white border border-[#E5DDD0] shadow-sm rounded-lg">
+        <form id="searchForm" class="space-y-4">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <span class="absolute left-4 top-3.5 text-[#9C7A3F]">
+                <svg class="w-4 h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="text" id="searchQuery" required placeholder="Type your query in natural language (e.g. data encryption policies)..." 
+                class="w-full pl-11 pr-14 py-3.5 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-[#221B17] text-sm focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:bg-white focus:border-[#9C7A3F] transition-all">
+              <span class="absolute right-4 top-4 text-[10px] font-mono font-bold bg-[#FAF6EF] text-[#8C827A] px-2 py-0.5 rounded border border-[#E5DDD0] hidden sm:inline">⌘K</span>
+            </div>
+            
+            <select id="docScopeSelect" class="px-4 py-3.5 bg-white border border-[#E5DDD0] rounded-md text-[#221B17] text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30">
+              <option value="">Scope: All Documents</option>
+            </select>
+            
+            <button type="submit" id="searchSubmitBtn" class="btn-primary py-3.5 px-8 text-sm font-semibold rounded-md whitespace-nowrap bg-[#7A2E38] hover:bg-[#5A2129]">
+              <span>Search Vector Index &rarr;</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Search Results Header -->
+      <div id="resultsHeader" class="hidden flex justify-between items-center text-sm">
+        <p class="text-[#4A403A] font-medium">Found <span id="matchCount" class="font-bold text-[#221B17]">0</span> semantic vector matches</p>
+        <span class="text-xs font-mono bg-[#9C7A3F]/10 text-[#9C7A3F] px-3 py-1 rounded border border-[#9C7A3F]/20">FAISS Inner-Product Metric</span>
+      </div>
+
+      <!-- Results Container -->
+      <div id="searchResultsList" class="space-y-4">
+        <div class="kai-card p-12 text-center text-[#8C827A] bg-white border border-[#E5DDD0] rounded-lg">
+          <div class="w-10 h-10 mx-auto mb-2 text-[#9C7A3F] flex items-center justify-center">
+            <svg class="w-8 h-8 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <p class="text-sm font-serif font-bold text-[#221B17]">Enter a query above to perform FAISS vector similarity search.</p>
+          <p class="text-xs text-[#8C827A] mt-1">Extracts exact chunk matches with relevance scores and document citations.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>

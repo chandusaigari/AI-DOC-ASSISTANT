@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KnowledgeAI - Editorial Knowledge Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen text-[#221B17] flex flex-col font-sans overflow-x-hidden">
+
+  <!-- Top Navigation Bar (Animated Scroll Hide) -->
+  <nav id="topNavbar" class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] sticky top-0 z-50 transition-all duration-300 ease-in-out shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="brand-logo-badge">K</div>
+        <span class="text-xl font-serif font-bold tracking-tight text-[#221B17] group-hover:text-[#9C7A3F] transition-colors">Knowledge<span class="text-[#9C7A3F]">AI</span></span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="admin.html" onclick="handleAdminPortalClick(event)" class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-md bg-[#7A2E38]/10 text-[#7A2E38] border border-[#7A2E38]/30 hover:bg-[#7A2E38] hover:text-[#FAF6EF] transition-all" title="Admin Portal">
+          <svg class="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Admin</span>
+        </a>
+        <a href="login.html" class="btn-secondary text-xs px-4 py-2">Sign In</a>
+        <a href="signup.html" class="btn-primary text-xs px-4 py-2">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section Wrapper -->
+  <section class="hero-bg relative border-b border-[#E5DDD0] flex-1 overflow-hidden">
+    <!-- Subtle Parchment Dot Grid Pattern Layer -->
+    <div class="hero-dot-pattern"></div>
+
+    <!-- Inner Hero Content Container -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pt-10 sm:pt-12 pb-12 sm:pb-14 text-center reveal-on-scroll">
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#221B17] leading-tight max-w-3xl mx-auto mb-4 sm:mb-5 tracking-tight">
+        Precision Document Intelligence. <br><span class="text-[#9C7A3F] italic">Ask with total confidence.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-[#4A403A] max-w-2xl mx-auto mb-6 sm:mb-7 leading-relaxed font-sans">
+        KnowledgeAI indexes PDF and Word documents into vector spaces, retrieving verified factual answers with exact page citations and paragraph-level audit trails.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5 sm:mb-6">
+        <a href="signup.html" class="btn-primary py-3 px-7 text-sm font-semibold shadow-md transition-all">Create Account &rarr;</a>
+        <a href="login.html" class="btn-secondary py-3 px-7 text-sm font-semibold">Sign In</a>
+      </div>
+
+      <!-- Trust / Stats Row -->
+      <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-8 text-xs text-[#8C827A] font-sans font-medium mb-8">
+        <div class="flex items-center gap-1.5">
+          <span class="text-[#9C7A3F] font-serif font-bold text-sm">98%</span>
+          <span>Citation Accuracy</span>
+        </div>
+        <span class="hidden sm:inline text-[#E5DDD0]">•</span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-[#7A2E38] font-serif font-bold text-sm">PDF + Word</span>
+          <span>Native Parsing</span>
+        </div>
+        <span class="hidden sm:inline text-[#E5DDD0]">•</span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-[#9C7A3F] font-serif font-bold text-sm">&lt; 1s</span>
+          <span>Vector Retrieval</span>
+        </div>
+      </div>
+
+      <!-- Editorial UI Product Preview Mockup -->
+      <div class="max-w-3xl mx-auto rounded-lg border border-[#E5DDD0] bg-white shadow-xl overflow-hidden text-left">
+        <!-- Mockup Window Header Bar -->
+        <div class="bg-[#1C1613] px-4 py-3 flex items-center justify-between border-b border-[#332A24]">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#D6CBB8] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#B5A895] inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-[#9C7A3F] inline-block"></span>
+          </div>
+          <div class="text-[11px] font-mono text-[#D6CBB8]/80 bg-[#241C18] px-3 py-1 rounded border border-[#332A24]">
+            knowledgeai.app / search
+          </div>
+          <div class="w-12"></div>
+        </div>
+
+        <!-- Mockup Content Grid -->
+        <div class="grid grid-cols-12 min-h-[220px] bg-[#FAF6EF]">
+          <!-- Mini Sidebar -->
+          <div class="col-span-3 bg-[#1C1613] p-3 border-r border-[#332A24] space-y-2 hidden sm:block">
+            <div class="text-[10px] uppercase tracking-wider text-[#8C827A] font-semibold mb-2">Documents</div>
+            <div class="p-2 rounded bg-[rgba(156,122,63,0.15)] text-[#9C7A3F] text-xs font-semibold flex items-center justify-between border-l-2 border-[#9C7A3F]">
+              <span class="flex items-center gap-1"><svg class="w-3.5 h-3.5 stroke-current fill-none shrink-0" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg> Q3_Audit.pdf</span>
+              <span class="text-[9px] bg-[#9C7A3F]/20 px-1 rounded">RAG</span>
+            </div>
+            <div class="p-2 rounded text-[#D6CBB8] text-xs flex items-center gap-1 hover:bg-[#2A221E]">
+              <svg class="w-3.5 h-3.5 stroke-current fill-none shrink-0" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg> Policy_v2.docx
+            </div>
+            <div class="p-2 rounded text-[#D6CBB8] text-xs flex items-center gap-1 hover:bg-[#2A221E]">
+              <svg class="w-3.5 h-3.5 stroke-current fill-none shrink-0" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg> Bylaws_2026.pdf
+            </div>
+          </div>
+
+          <!-- Mini Content View -->
+          <div class="col-span-12 sm:col-span-9 p-4 space-y-3">
+            <div class="bg-[#FBF8F1] p-3.5 rounded border border-[#9C7A3F]/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-serif font-bold text-[#7A2E38]">KnowledgeAI Assistant</span>
+                <span class="text-[10px] font-mono text-[#9C7A3F] bg-[#9C7A3F]/10 px-2 py-0.5 rounded border border-[#9C7A3F]/20 flex items-center gap-1"><svg class="w-3 h-3 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14l-1.5-6H6.5L5 17z"/><path d="M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7"/></svg> Q3_Audit.pdf [P. 14]</span>
+              </div>
+              <p class="text-xs text-[#4A403A] leading-relaxed">
+                Section 4.2 requires quarterly independent verification of vector indices and encrypted storage of all user credentials...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section with Scroll Reveal -->
+  <section class="bg-[#FAF6EF] border-t border-[#E5DDD0] py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12 reveal-on-scroll">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#221B17]">Institutional Capabilities</h2>
+        <p class="text-[#8C827A] text-xs mt-2 font-sans">Designed for rigorous research, analysis, and document verification</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-100">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            I
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Native Document Parsing</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Deep structural parsing for PDF and Word files (`.docx`) preserving section hierarchy and page metadata.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-200">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            II
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Semantic FAISS Indexing</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Vector embeddings capture conceptual meaning across thousands of paragraphs for contextual retrieval.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-300">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            III
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Exact Page Citations</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Every answer includes explicit source document and page references for audit compliance and verification.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-100">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            IV
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Sub-Second Retrieval</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Optimized memory vectors return precise answers to complex legal and financial queries in milliseconds.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-200">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            V
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Isolated Security Scope</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Strict user-level authentication and encrypted storage isolate vector indices from unauthorized access.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="kai-card p-6 bg-white border border-[#E5DDD0] rounded-lg reveal-on-scroll delay-300">
+          <div class="w-9 h-9 rounded-md bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/20 font-serif font-bold flex items-center justify-center text-sm mb-4">
+            VI
+          </div>
+          <h3 class="text-base font-serif font-bold text-[#221B17] mb-2">Conversation Archive</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Bookmark key citations, organize research threads into favorites, and review historical inquiries seamlessly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section with Scroll Reveal -->
+  <section class="bg-white border-y border-[#E5DDD0] py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12 reveal-on-scroll">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#221B17]">Methodology</h2>
+        <p class="text-[#8C827A] text-xs mt-2 font-sans">Four steps from raw documents to verified intelligence</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="kai-card p-6 relative reveal-on-scroll delay-100 border border-[#E5DDD0] rounded-lg">
+          <div class="w-8 h-8 rounded-md bg-[#7A2E38] text-[#FAF6EF] font-serif font-bold text-sm flex items-center justify-center mb-4">
+            I
+          </div>
+          <h3 class="text-sm font-serif font-bold text-[#221B17] mb-2">Upload Corpus</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Securely upload PDF and DOCX files into your personal workspace.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="kai-card p-6 relative reveal-on-scroll delay-200 border border-[#E5DDD0] rounded-lg">
+          <div class="w-8 h-8 rounded-md bg-[#7A2E38] text-[#FAF6EF] font-serif font-bold text-sm flex items-center justify-center mb-4">
+            II
+          </div>
+          <h3 class="text-sm font-serif font-bold text-[#221B17] mb-2">Vector Indexing</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Deep parsers chunk text page-by-page and generate FAISS vector indices.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="kai-card p-6 relative reveal-on-scroll delay-300 border border-[#E5DDD0] rounded-lg">
+          <div class="w-8 h-8 rounded-md bg-[#7A2E38] text-[#FAF6EF] font-serif font-bold text-sm flex items-center justify-center mb-4">
+            III
+          </div>
+          <h3 class="text-sm font-serif font-bold text-[#221B17] mb-2">Natural Query</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Ask targeted questions in natural prose without complex Boolean syntax.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="kai-card p-6 relative reveal-on-scroll delay-400 border border-[#E5DDD0] rounded-lg">
+          <div class="w-8 h-8 rounded-md bg-[#7A2E38] text-[#FAF6EF] font-serif font-bold text-sm flex items-center justify-center mb-4">
+            IV
+          </div>
+          <h3 class="text-sm font-serif font-bold text-[#221B17] mb-2">Sourced Answer</h3>
+          <p class="text-[#4A403A] text-xs leading-relaxed font-sans">
+            Receive concise synthesized answers paired with exact document page citations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Call to Action Band with Scroll Reveal -->
+  <section class="max-w-5xl mx-auto px-6 py-16 reveal-on-scroll">
+    <div class="bg-[#7A2E38] text-[#FAF6EF] rounded-lg p-8 sm:p-12 text-center shadow-lg border border-[#5A2129]">
+      <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-3">Elevate your document workflow today</h3>
+      <p class="text-[#FAF6EF]/80 text-xs sm:text-sm max-w-xl mx-auto mb-8 leading-relaxed font-sans">
+        Experience institutional precision with AI vector search across all your PDF and Word documents.
+      </p>
+      <a href="signup.html" class="inline-block bg-[#9C7A3F] hover:bg-[#7C6132] text-[#FAF6EF] font-semibold text-xs uppercase tracking-wider px-8 py-3.5 rounded-md transition-colors shadow-sm">
+        Create Account Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-[#FAF6EF] border-t border-[#E5DDD0] py-6">
+    <div class="max-w-5xl mx-auto px-6 text-center text-xs text-[#8C827A] font-sans">
+      &copy; 2026 KnowledgeAI. Classic Editorial Theme.
+    </div>
+  </footer>
+
+  <!-- Scroll Interaction & Animated Navbar Hide Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Hide Navbar on Scroll Down, Reveal on Scroll Up
+      let lastScrollY = window.scrollY;
+      const navbar = document.getElementById('topNavbar') || document.querySelector('nav');
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 60 && currentScrollY > lastScrollY) {
+          navbar.classList.add('-translate-y-full', 'opacity-0');
+          navbar.classList.remove('translate-y-0', 'opacity-100');
+        } else {
+          navbar.classList.remove('-translate-y-full', 'opacity-0');
+          navbar.classList.add('translate-y-0', 'opacity-100');
+        }
+        lastScrollY = currentScrollY;
+      }, { passive: true });
+
+      // 2. Scroll Reveal Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+/* KnowledgeAI Design System - Classic Private Bank & Law Firm Editorial Theme */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Color Palette - Deep Burgundy & Brass/Gold on Warm Ivory */
+  --brand-burgundy: #7A2E38;
+  --brand-burgundy-hover: #5A2129;
+  --brand-burgundy-light: #F7EFEF;
+
+  --gold-accent: #9C7A3F;
+  --gold-hover: #7C6132;
+  --gold-light: #FBF8F1;
+  --gold-border: rgba(156, 122, 63, 0.3);
+
+  /* Warm Neutrals */
+  --ink-dark: #221B17;
+  --ink-muted: #4A403A;
+  --ink-subtle: #8C827A;
+  --bg-warm-ivory: #FAF6EF;
+  --card-bg: #FFFFFF;
+  --border-warm: #E5DDD0;
+  --border-warm-hover: #D6CBB8;
+
+  /* Dark Charcoal Sidebar Tokens */
+  --sidebar-bg: #1C1613;
+  --sidebar-border: #332A24;
+  --sidebar-text: #D6CBB8;
+  --sidebar-hover-bg: #2A221E;
+
+  /* Errors Only (Warm Oxblood Red) */
+  --oxblood-red: #8B2E28;
+  --oxblood-bg: #FDF2F1;
+  --oxblood-border: #F5D5D3;
+
+  /* Legacy Mappings */
+  --primary: var(--brand-burgundy);
+  --primary-hover: var(--brand-burgundy-hover);
+  --primary-light: var(--brand-burgundy-light);
+  --primary-ring: rgba(122, 46, 56, 0.25);
+  --bg-main: var(--bg-warm-ivory);
+  --text-main: var(--ink-dark);
+  --text-muted: var(--ink-muted);
+  --border-color: var(--border-warm);
+  --border-hover: var(--border-warm-hover);
+
+  /* Sharper Surfaces (6-8px Radius) */
+  --radius-lg: 8px;
+  --radius-md: 6px;
+  --radius-sm: 4px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-warm-ivory);
+  color: var(--ink-dark);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Serif Typography for Headings, Logo Wordmark & Numeric Callouts */
+h1, h2, h3, h4, .font-serif, .logo-wordmark, .stat-number {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4, .logo-wordmark, .stat-number {
+  color: var(--ink-dark);
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Accessible Keyboard Focus Rings */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold-accent) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(156, 122, 63, 0.2) !important;
+}
+
+/* Custom "K" Logo Badge */
+.brand-logo-badge {
+  width: 36px;
+  height: 36px;
+  background: var(--brand-burgundy);
+  color: #FAF6EF;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(34, 27, 23, 0.15);
+  transition: all 0.2s ease;
+}
+
+.brand-logo-badge:hover {
+  background: var(--brand-burgundy-hover);
+  transform: translateY(-1px);
+}
+
+/* Base Card Style - Sharp Surface with Soft Warm Shadow */
+.kai-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(34, 27, 23, 0.04);
+  transition: all 0.2s ease;
+}
+
+.kai-card:hover {
+  border-color: var(--border-warm-hover);
+  box-shadow: 0 6px 16px rgba(34, 27, 23, 0.07);
+}
+
+/* Primary Button with Burgundy & Sharp Radius */
+.btn-primary {
+  background-color: var(--brand-burgundy);
+  color: #FAF6EF;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 0.625rem 1.25rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(122, 46, 56, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-burgundy-hover);
+  box-shadow: 0 4px 12px rgba(122, 46, 56, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--ink-dark);
+  border: 1px solid var(--border-warm);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 0.625rem 1.25rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-warm-ivory);
+  border-color: var(--border-warm-hover);
+  color: var(--ink-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* Sidebar Styling & Nav Active Gold Border */
+.gooey-nav-link {
+  position: relative;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.gooey-nav-link:hover {
+  background-color: var(--sidebar-hover-bg);
+  color: #FFFFFF !important;
+}
+
+.gooey-nav-link.active {
+  background-color: rgba(156, 122, 63, 0.12);
+  border-left-color: var(--gold-accent);
+  color: var(--gold-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* Favorite Star Button Interactive Styling */
+.btn-favorite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-warm);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-favorite:hover {
+  background-color: var(--gold-light);
+  border-color: var(--gold-accent);
+  color: var(--gold-hover);
+  transform: translateY(-1px);
+}
+
+.btn-favorite.active {
+  background-color: var(--gold-light);
+  border-color: var(--gold-accent);
+  color: var(--gold-hover);
+}
+
+/* Toast Notifications */
+.kai-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--ink-dark);
+  color: #FAF6EF;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(34, 27, 23, 0.25);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideInUp 0.3s ease-out forwards;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-warm-ivory); }
+::-webkit-scrollbar-thumb { background: #D6CBB8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B8AC9A; }
+
+/* Markdown Styling inside Assistant */
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink-dark);
+}
+.markdown-body p {
+  margin-bottom: 0.75rem;
+  line-height: 1.65;
+  color: var(--ink-dark);
+}
+.markdown-body ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.markdown-body ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.markdown-body blockquote {
+  border-left: 3px solid var(--gold-accent);
+  padding-left: 1rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 0.75rem 0;
+  background-color: var(--gold-light);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Editorial Parchment Hero Section */
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-warm-ivory);
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(156, 122, 63, 0.08) 0%, transparent 70%),
+    radial-gradient(circle at 10% 80%, rgba(122, 46, 56, 0.04) 0%, transparent 60%);
+}
+
+.hero-dot-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(140, 130, 122, 0.22) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, #000 20%, transparent 95%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, #000 20%, transparent 95%);
+}

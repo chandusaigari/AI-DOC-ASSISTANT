@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex flex-col justify-between items-center p-6 font-sans">
+
+  <div></div>
+
+  <!-- Main Signup Container -->
+  <div class="w-full max-w-md flex flex-col items-center my-auto">
+    
+    <!-- Top Header & Logo Badge -->
+    <div class="mb-8 flex flex-col items-center text-center">
+      <a href="index.html" class="flex items-center gap-3 group mb-2">
+        <div class="brand-logo-badge">K</div>
+        <span class="text-3xl font-serif font-bold tracking-tight text-[#221B17] group-hover:text-[#9C7A3F] transition-colors">Knowledge<span class="text-[#9C7A3F]">AI</span></span>
+      </a>
+      <p class="text-[#8C827A] text-xs font-serif font-medium">Create your institutional workspace</p>
+    </div>
+
+    <!-- Register White Card -->
+    <div class="w-full bg-white border border-[#E5DDD0] rounded-lg shadow-sm p-8">
+      <div class="mb-6">
+        <h1 class="text-2xl font-serif font-bold text-[#221B17]">Create Account</h1>
+        <p class="text-[#8C827A] text-xs mt-1">Create your account to start using KnowledgeAI</p>
+      </div>
+
+      <!-- Alert Box -->
+      <div id="alertBox" class="hidden mb-5 p-3.5 bg-[#FDF2F1] border border-[#F5D5D3] text-[#8B2E28] text-xs rounded-md flex items-center gap-2">
+        <svg class="w-4 h-4 stroke-[#8B2E28] fill-none shrink-0" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
+        <span id="alertMessage">Error creating account</span>
+      </div>
+
+      <form id="signupForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-xs font-semibold text-[#221B17] mb-1.5">Gmail Address</label>
+          <input type="email" id="email" name="email" required placeholder="user@gmail.com" autocomplete="username email"
+            class="w-full px-4 py-3 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-[#221B17] text-sm focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:bg-white focus:border-[#9C7A3F] transition-all">
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label for="password" class="block text-xs font-semibold text-[#221B17]">Create Password</label>
+            <button type="button" id="toggleSignupPasswordBtn" onclick="toggleSignupPasswordVisibility()" class="text-xs font-semibold text-[#9C7A3F] hover:underline focus:outline-none">
+              Show
+            </button>
+          </div>
+          <input type="password" id="password" name="password" required minlength="6" placeholder="At least 6 characters" autocomplete="new-password"
+            class="w-full px-4 py-3 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-[#221B17] text-sm focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:bg-white focus:border-[#9C7A3F] transition-all">
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block text-xs font-semibold text-[#221B17] mb-1.5">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="Repeat your password" autocomplete="new-password"
+            class="w-full px-4 py-3 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-[#221B17] text-sm focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:bg-white focus:border-[#9C7A3F] transition-all">
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full btn-primary py-3.5 text-sm font-semibold rounded-md mt-2 bg-[#7A2E38] hover:bg-[#5A2129]">
+          <span>Create Account</span>
+        </button>
+      </form>
+
+      <div class="mt-6 pt-6 border-t border-[#E5DDD0] text-center">
+        <p class="text-xs text-[#4A403A]">
+          Already have an account? 
+          <a href="login.html" class="font-bold text-[#9C7A3F] hover:underline">Sign In</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="text-center text-xs text-[#8C827A] py-4">
+    &copy; 2026 KnowledgeAI
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function toggleSignupPasswordVisibility() {
+      const pwdInput = document.getElementById('password');
+      const confirmInput = document.getElementById('confirmPassword');
+      const btn = document.getElementById('toggleSignupPasswordBtn');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        confirmInput.type = 'text';
+        btn.textContent = 'Hide';
+      } else {
+        pwdInput.type = 'password';
+        confirmInput.type = 'password';
+        btn.textContent = 'Show';
+      }
+    }
+  </script>
+</body>
+</html>

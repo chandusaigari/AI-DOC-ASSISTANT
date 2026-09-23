@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Panel - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex font-sans">
+
+  <!-- Shared Sidebar Root -->
+  <aside id="sidebar-root" data-active="practice"></aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+    <!-- Top Header -->
+    <header class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-[#7A2E38] text-[#FAF6EF] flex items-center justify-center font-serif font-bold text-lg shadow-sm">
+          <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-serif font-bold text-[#221B17]">
+            Knowledge Practice Panel
+          </h1>
+          <p class="text-xs text-[#8C827A] mt-0.5">Test & reinforce your comprehension using document-generated Objective MCQs and Oral Viva Exams.</p>
+        </div>
+      </div>
+
+      <!-- User Profile Header -->
+      <div class="flex items-center gap-3 bg-white border border-[#E5DDD0] px-3.5 py-1.5 rounded-md shadow-sm">
+        <div class="w-8 h-8 rounded-md bg-[#9C7A3F] text-[#FAF6EF] flex items-center justify-center font-serif font-bold text-xs shrink-0 shadow-sm" id="userHeaderAvatar">
+          U
+        </div>
+        <div class="text-left hidden sm:block">
+          <p class="text-xs font-semibold text-[#221B17] truncate max-w-[150px]" id="userHeaderEmail">user@gmail.com</p>
+          <p class="text-[10px] font-bold text-[#9C7A3F] uppercase tracking-wider">Knowledge User</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-5xl mx-auto w-full space-y-8">
+
+      <!-- Document Scope Selection Card -->
+      <div class="kai-card bg-white border border-[#E5DDD0] rounded-lg p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-left w-full md:w-auto">
+          <label for="practiceDocSelect" class="block text-xs font-serif font-bold text-[#221B17] uppercase tracking-wider">Select Source Document for Practice</label>
+          <p class="text-xs text-[#8C827A]">AI generates practice questions directly from the passages of your selected document.</p>
+        </div>
+
+        <div class="w-full md:w-80 shrink-0">
+          <select id="practiceDocSelect" class="w-full px-4 py-2.5 bg-[#FAF6EF] border border-[#E5DDD0] rounded-md text-xs font-medium text-[#221B17] focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:border-[#9C7A3F]">
+            <option value="all">All Uploaded Documents (Corpus-wide)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Mode Selector Tabs / Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="modeSelectorCards">
+        <!-- Card 1: Objective MCQ Mode -->
+        <div onclick="startPracticeMode('mcq')" class="kai-card p-6 bg-white border-2 border-[#E5DDD0] hover:border-[#9C7A3F] rounded-lg cursor-pointer transition-all hover:shadow-md group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-lg bg-[#9C7A3F]/10 text-[#9C7A3F] flex items-center justify-center font-serif font-bold text-xl group-hover:bg-[#9C7A3F] group-hover:text-white transition-colors">
+              📝
+            </div>
+            <h3 class="text-lg font-serif font-bold text-[#221B17] group-hover:text-[#9C7A3F] transition-colors">Objective MCQ Quiz</h3>
+            <p class="text-xs text-[#4A403A] leading-relaxed">
+              Dynamic 4-option multiple-choice quiz. Provides instant <span class="text-emerald-700 font-bold">Green (Correct)</span> and <span class="text-rose-700 font-bold">Red (Incorrect)</span> visual feedback, correct answer highlights, and detailed document explanations with page citations.
+            </p>
+          </div>
+          <div class="pt-6 flex justify-between items-center text-xs font-bold text-[#9C7A3F]">
+            <span>Start MCQ Quiz &rarr;</span>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#FAF6EF] rounded border border-[#E5DDD0]">Auto-graded</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Viva Voice Mode -->
+        <div onclick="startPracticeMode('viva')" class="kai-card p-6 bg-white border-2 border-[#E5DDD0] hover:border-[#7A2E38] rounded-lg cursor-pointer transition-all hover:shadow-md group flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-lg bg-[#7A2E38]/10 text-[#7A2E38] flex items-center justify-center font-serif font-bold text-xl group-hover:bg-[#7A2E38] group-hover:text-white transition-colors">
+              🎓
+            </div>
+            <h3 class="text-lg font-serif font-bold text-[#221B17] group-hover:text-[#7A2E38] transition-colors">Viva Voice Examination</h3>
+            <p class="text-xs text-[#4A403A] leading-relaxed">
+              Conceptual oral exam simulation. The AI examiner presents deep document questions; you type your response. Returns a score (1–10), strengths, missed concepts, and ideal model answers.
+            </p>
+          </div>
+          <div class="pt-6 flex justify-between items-center text-xs font-bold text-[#7A2E38]">
+            <span>Start Viva Oral Exam &rarr;</span>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#FAF6EF] rounded border border-[#E5DDD0]">AI Evaluated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRACTICE VIEW CONTAINER (Initially Hidden until mode is picked) -->
+      <div id="practiceViewContainer" class="hidden space-y-6">
+        
+        <!-- Back Bar -->
+        <div class="flex items-center justify-between border-b border-[#E5DDD0] pb-4">
+          <button onclick="resetPracticeSelection()" class="text-xs font-semibold text-[#7A2E38] hover:underline flex items-center gap-1.5 cursor-pointer">
+            &larr; Switch Practice Mode
+          </button>
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <span class="px-2.5 py-1 bg-white border border-[#E5DDD0] rounded text-[#221B17] font-semibold" id="practiceModeBadge">Objective MCQ Mode</span>
+            <span class="px-2.5 py-1 bg-[#9C7A3F]/10 border border-[#9C7A3F]/30 text-[#9C7A3F] font-bold rounded" id="scoreTrackerBadge">Score: 0/0 (0%)</span>
+          </div>
+        </div>
+
+        <!-- 1. OBJECTIVE MCQ VIEW -->
+        <div id="mcqPracticeSection" class="space-y-6 hidden">
+          
+          <!-- MCQ Quiz Card -->
+          <div id="mcqQuizCard" class="kai-card bg-white border border-[#E5DDD0] rounded-lg p-6 shadow-sm space-y-6">
+            
+            <!-- MCQ Header Info -->
+            <div class="flex justify-between items-center text-xs border-b border-[#E5DDD0] pb-3">
+              <span class="font-serif font-bold text-[#7A2E38]" id="mcqCounter">Question 1 of 5</span>
+              <span class="text-[#8C827A] font-mono text-[11px]" id="mcqCitationBadge">Source: Document Title (Page 1)</span>
+            </div>
+
+            <!-- MCQ Question Text -->
+            <div class="space-y-2">
+              <h2 class="text-base sm:text-lg font-serif font-bold text-[#221B17] leading-relaxed" id="mcqQuestionText">
+                Loading practice question...
+              </h2>
+            </div>
+
+            <!-- MCQ Options (A, B, C, D) -->
+            <div class="grid grid-cols-1 gap-3" id="mcqOptionsContainer">
+              <!-- Dynamically populated MCQ Option Buttons -->
+            </div>
+
+            <!-- MCQ Answer Explanation Card (Hidden until an option is selected) -->
+            <div id="mcqExplanationCard" class="hidden p-4 rounded-md border text-xs leading-relaxed space-y-2">
+              <div class="font-serif font-bold flex items-center gap-2 text-sm" id="mcqResultTitle">
+                <!-- Correct / Incorrect title -->
+              </div>
+              <p id="mcqExplanationText" class="text-[#4A403A]">
+                <!-- Document explanation text -->
+              </p>
+            </div>
+
+            <!-- MCQ Controls -->
+            <div class="flex justify-end pt-2">
+              <button id="nextMcqBtn" onclick="nextMcqQuestion()" class="btn-primary py-2.5 px-6 text-xs font-semibold rounded-md shadow-sm bg-[#7A2E38] hover:bg-[#5A2129] hidden">
+                Next Question &rarr;
+              </button>
+            </div>
+
+          </div>
+
+          <!-- MCQ Quiz Completed Summary Card (Initially Hidden) -->
+          <div id="mcqSummaryCard" class="kai-card bg-white border border-[#E5DDD0] rounded-lg p-8 shadow-sm text-center space-y-6 hidden">
+            <div class="w-16 h-16 rounded-full bg-[#9C7A3F]/10 text-[#9C7A3F] flex items-center justify-center font-serif font-bold text-3xl mx-auto">
+              🏆
+            </div>
+            <h2 class="text-2xl font-serif font-bold text-[#221B17]">MCQ Quiz Completed!</h2>
+            <div class="inline-flex items-center gap-4 bg-[#FAF6EF] px-6 py-3 rounded-lg border border-[#E5DDD0]">
+              <div class="text-left">
+                <p class="text-[10px] font-serif font-bold text-[#8C827A] uppercase tracking-wider">Final Accuracy Score</p>
+                <p class="text-2xl font-serif font-bold text-[#7A2E38]" id="mcqSummaryScoreText">0 / 0 Correct (0%)</p>
+              </div>
+            </div>
+            <p class="text-xs text-[#4A403A] max-w-md mx-auto" id="mcqSummaryAdviceText">
+              Good practice attempt! Review document passages to improve accuracy.
+            </p>
+            <div class="flex justify-center gap-4 pt-2">
+              <button onclick="startPracticeMode('mcq')" class="btn-primary py-3 px-6 text-xs font-semibold rounded-md shadow-sm bg-[#7A2E38] hover:bg-[#5A2129]">
+                Retake MCQ Practice &rarr;
+              </button>
+              <button onclick="resetPracticeSelection()" class="btn-secondary py-3 px-6 text-xs font-semibold rounded-md">
+                Switch Practice Mode
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2. VIVA VOICE VIEW -->
+        <div id="vivaPracticeSection" class="space-y-6 hidden">
+          <div class="kai-card bg-white border border-[#E5DDD0] rounded-lg p-6 shadow-sm space-y-6">
+            
+            <!-- Viva Header Info -->
+            <div class="flex justify-between items-center text-xs border-b border-[#E5DDD0] pb-3">
+              <span class="font-serif font-bold text-[#7A2E38] flex items-center gap-2">
+                <span>🎓 Viva Examiner</span>
+                <span class="text-[10px] font-mono font-normal text-[#8C827A] bg-[#FAF6EF] px-2 py-0.5 rounded border border-[#E5DDD0]" id="vivaTopicBadge">Topic: Document Concepts</span>
+              </span>
+              <span class="text-[#8C827A] font-mono text-[11px]" id="vivaCitationBadge">Document: Source Title</span>
+            </div>
+
+            <!-- Viva Question Card -->
+            <div class="p-5 bg-[#FAF6EF] border border-[#E5DDD0] rounded-md space-y-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#9C7A3F]">Examiner's Question</span>
+              <h2 class="text-base sm:text-lg font-serif font-bold text-[#221B17] leading-relaxed" id="vivaQuestionText">
+                Loading Viva question...
+              </h2>
+            </div>
+
+            <!-- Student Typed Answer Input -->
+            <div class="space-y-2">
+              <label for="vivaAnswerInput" class="block text-xs font-semibold text-[#221B17]">Your Typed Viva Response</label>
+              <textarea id="vivaAnswerInput" rows="5" placeholder="Type your response to the examiner's question based on your document knowledge..."
+                class="w-full px-4 py-3 bg-[#FAF6EF]/70 border border-[#E5DDD0] rounded-md text-xs text-[#221B17] focus:outline-none focus:ring-2 focus:ring-[#9C7A3F]/30 focus:border-[#9C7A3F] leading-relaxed"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+              <button id="submitVivaBtn" onclick="submitVivaAnswer()" class="btn-primary py-3 px-8 text-xs font-semibold rounded-md shadow-sm bg-[#7A2E38] hover:bg-[#5A2129]">
+                Submit Response to Examiner &rarr;
+              </button>
+            </div>
+
+            <!-- Viva Examiner Evaluation Output Card (Hidden until submitted) -->
+            <div id="vivaEvaluationCard" class="hidden space-y-4 pt-4 border-t border-[#E5DDD0]">
+              <div class="p-5 bg-white border-2 border-[#9C7A3F] rounded-lg space-y-4 shadow-sm">
+                
+                <div class="flex justify-between items-center border-b border-[#E5DDD0] pb-3">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl font-serif font-bold text-[#7A2E38]" id="vivaScoreVal">8/10</span>
+                    <span class="px-2.5 py-1 bg-[#9C7A3F]/10 text-[#9C7A3F] border border-[#9C7A3F]/30 text-xs font-serif font-bold rounded" id="vivaRatingBadge">Outstanding</span>
+                  </div>
+                  <span class="text-xs text-[#8C827A] font-mono">Official Evaluation</span>
+                </div>
+
+                <div class="space-y-3 text-xs leading-relaxed text-[#221B17]">
+                  <div>
+                    <span class="font-bold text-[#7A2E38] block mb-0.5">Examiner Feedback:</span>
+                    <p id="vivaFeedbackText" class="text-[#4A403A]"></p>
+                  </div>
+                  <div>
+                    <span class="font-bold text-emerald-800 block mb-0.5">Key Strengths:</span>
+                    <p id="vivaStrengthsText" class="text-[#4A403A]"></p>
+                  </div>
+                  <div>
+                    <span class="font-bold text-rose-800 block mb-0.5">Missed Document Concepts:</span>
+                    <p id="vivaMissedText" class="text-[#4A403A]"></p>
+                  </div>
+                  <div class="p-3 bg-[#FAF6EF] rounded border border-[#E5DDD0]">
+                    <span class="font-serif font-bold text-[#9C7A3F] block mb-1">Ideal Model Answer:</span>
+                    <p id="vivaModelAnswerText" class="italic text-[#221B17] leading-relaxed"></p>
+                  </div>
+                </div>
+
+                <div class="flex justify-end pt-2">
+                  <button onclick="nextVivaQuestion()" class="btn-primary py-2.5 px-6 text-xs font-semibold rounded-md shadow-sm bg-[#7A2E38] hover:bg-[#5A2129]">
+                    Next Viva Question &rarr;
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/practice.js"></script>
+</body>
+</html>

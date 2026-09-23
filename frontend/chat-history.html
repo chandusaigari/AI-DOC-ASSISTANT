@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat History - KnowledgeAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF6EF] min-h-screen flex font-sans">
+
+  <!-- Shared Sidebar Root (Dark Charcoal Theme) -->
+  <aside id="sidebar-root" data-active="chats"></aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+    <!-- Top Menubar Header -->
+    <header class="bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E5DDD0] px-8 py-4 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div>
+        <h1 class="text-xl font-serif font-bold text-[#221B17] flex items-center gap-2">
+          <span>AI Assistant Chat History</span>
+          <span class="px-2.5 py-0.5 bg-[#7A2E38]/10 text-[#7A2E38] text-xs font-serif font-bold rounded border border-[#7A2E38]/20">Archive</span>
+        </h1>
+        <p class="text-xs text-[#8C827A] mt-0.5">Past question and answer sessions grouped chronologically</p>
+      </div>
+
+      <button onclick="clearHistory()" class="btn-secondary text-xs py-2 px-4 text-[#8B2E28] hover:bg-[#FDF2F1] hover:border-[#F5D5D3]">
+        Clear All History
+      </button>
+    </header>
+
+    <div class="p-8 max-w-5xl mx-auto w-full space-y-8" id="historyGroupsContainer">
+      <div class="kai-card p-12 text-center text-[#8C827A] text-sm bg-white border border-[#E5DDD0] rounded-lg">
+        Loading chat history...
+      </div>
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/chat-history.js"></script>
+</body>
+</html>
